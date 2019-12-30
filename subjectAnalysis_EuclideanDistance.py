@@ -8,7 +8,7 @@ import scipy
 from collections import Counter
 
 
-print "\n"
+print("\n")
 
 #######################
 # Parse the files
@@ -24,21 +24,21 @@ Y_test = Y_test.flatten()
 #######################
 # Pre-processing of data
 
-print "Pre_processing"
+print("Pre_processing")
 
 X_test , Y_test = common.getDataSubset(X_test, Y_test, [4,5])
 
 X_train = common.getPowerK( X_train, [1,2])  
 X_test  = common.getPowerK( X_test, [1,2])  
 
-print "Done"
+print("Done")
 
 #######################
 
 # These hold the information about the clusters for a SPECIFIC ACTIVITY of a SPECIFIC PERSON #
 # TRAINING HERE#
 
-print "Training"
+print("Training")
 
 trainSubjects = [1,3,5,6,7,8,11,14,15,16,17,19,21,22,23,25,26,27,28,29,30]
 requiredLabels = [4,5]
@@ -54,22 +54,22 @@ for i in trainSubjects:
 		cov_array.append(cov)
 		label_array.append( j )
 
-print "Done"
+print("Done")
 	
 ######################################################################
 
 # TEST HERE #
 
-print "Testing"
+print("Testing")
 
 predicted = []
 	
-for i in xrange(len(X_test)):
+for i in range(len(X_test)):
 
 	feature = X_test[i]
 
 	distance_array = []
-	for i in xrange(len(mean_array)):
+	for i in range(len(mean_array)):
 
 		# Find Euclidean distance
 
@@ -84,20 +84,20 @@ for i in xrange(len(X_test)):
 	top_labels = Counter(top_labels)
 	predicted.append( top_labels.most_common(1)[0][0] )
 	
-print "Done"
+print("Done")
 
 ######################################################################
 # Check Accuracy
 
-print "Checking accuracy"
+print("Checking accuracy")
 
 precision,recall, f_score = common.checkAccuracy( Y_test , predicted , requiredLabels )
-print f_score
+print(f_score)
 		
 confusionMatrix = common.createConfusionMatrix(predicted ,Y_test,requiredLabels)
-print confusionMatrix
+print(confusionMatrix)
 
-print "Done"
+print("Done")
 
 ######################################################################
 

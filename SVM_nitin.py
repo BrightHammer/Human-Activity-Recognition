@@ -23,19 +23,19 @@ def LinearSVC_onData():
     clf.fit(X_Dynamic, Y_Dynamic.flatten())
 
     precision,recall,fscore = common.checkAccuracy(clf.predict(X_Dynamic),Y_Dynamic,[1,2,3,4,5,6])
-    print common.createConfusionMatrix(clf.predict(X_Dynamic).flatten(),Y_Dynamic.flatten(),[1,2,3,4,5,6])
+    print(common.createConfusionMatrix(clf.predict(X_Dynamic).flatten(),Y_Dynamic.flatten(),[1,2,3,4,5,6]))
 
     #Fitting data using LinearSVC classifier
     clf = SVC(kernel = "linear")
     clf.fit(X_Dynamic, Y_Dynamic.flatten())
     
     precision,recall,fscore = common.checkAccuracy(clf.predict(X_Dynamic),Y_Dynamic,[1,2,3,4,5,6])
-    print common.createConfusionMatrix(clf.predict(X_Dynamic).flatten(),Y_Dynamic.flatten(),[1,2,3,4,5,6])
+    print(common.createConfusionMatrix(clf.predict(X_Dynamic).flatten(),Y_Dynamic.flatten(),[1,2,3,4,5,6]))
 
     precision,recall,fscore = common.checkAccuracy(clf.predict(X_DynamicTest),Y_DynamicTest,[1,2,3,4,5,6])
-    print common.createConfusionMatrix(clf.predict(X_DynamicTest).flatten(),Y_DynamicTest.flatten(),[1,2,3,4,5,6])
+    print(common.createConfusionMatrix(clf.predict(X_DynamicTest).flatten(),Y_DynamicTest.flatten(),[1,2,3,4,5,6]))
 
-    print fscore
+    print(fscore)
 #################################################################################################################################
     #Getting the dataset associated with Dynamic Activities on training 
     X_Dynamic,Y_Dynamic = common.getDataSubset(XFull,YFull.flatten(),[1,2,3,4,5,6])
@@ -50,9 +50,9 @@ def LinearSVC_onData():
     clf.fit(X_Dynamic, Y_Dynamic.flatten())
 
     precision,recall,fscore = common.checkAccuracy(clf.predict(X_DynamicTest),Y_DynamicTest,[1,2,3,4,5,6])
-    print common.createConfusionMatrix(clf.predict(X_DynamicTest).flatten(),Y_DynamicTest.flatten(),[1,2,3,4,5,6])
+    print(common.createConfusionMatrix(clf.predict(X_DynamicTest).flatten(),Y_DynamicTest.flatten(),[1,2,3,4,5,6]))
 
-    print fscore
+    print(fscore)
 #################################################################################################################################
     #Getting the dataset associated with Dynamic Activities on training 
     X_Dynamic,Y_Dynamic = common.getDataSubset(XFull,YFull.flatten(),[1,2,3,4,5,6])
@@ -67,23 +67,23 @@ def LinearSVC_onData():
     clf.fit(X_Dynamic, Y_Dynamic.flatten())
 
     precision,recall,fscore = common.checkAccuracy(clf.predict(X_DynamicTest),Y_DynamicTest,[1,2,3,4,5,6])
-    print common.createConfusionMatrix(clf.predict(X_DynamicTest).flatten(),Y_DynamicTest.flatten(),[1,2,3,4,5,6])
+    print(common.createConfusionMatrix(clf.predict(X_DynamicTest).flatten(),Y_DynamicTest.flatten(),[1,2,3,4,5,6]))
 
-    print fscore
+    print(fscore)
 #################################################################################################################################
     #Getting the dataset associated with Dynamic Activities on training 
     X_Dynamic,Y_Dynamic = common.getDataSubset(XFull,YFull.flatten(),[1,2,3])
     #Getting the dataset associated with Dynamic Activities on testing
     X_DynamicTest,Y_DynamicTest = common.getDataSubset(XFullTest,YFullTest.flatten(),[1,2,3])
-    print len(X_DynamicTest),len(Y_DynamicTest)
+    print(len(X_DynamicTest),len(Y_DynamicTest))
 
     #Fitting data using LinearSVC classifier
     clf = SVC(kernel = "linear")
     clf.fit(X_Dynamic, Y_Dynamic.flatten())
 
     precision,recall,fscore = common.checkAccuracy(clf.predict(X_DynamicTest),Y_DynamicTest,[1,2,3])
-    print common.createConfusionMatrix(clf.predict(X_DynamicTest).flatten(),Y_DynamicTest.flatten(),[1,2,3])
-    print fscore
+    print(common.createConfusionMatrix(clf.predict(X_DynamicTest).flatten(),Y_DynamicTest.flatten(),[1,2,3]))
+    print(fscore)
 #################################################################################################################################
     #Getting the dataset associated with Dynamic Activities on training 
     X_Dynamic,Y_Dynamic = common.getDataSubset(XFull,YFull.flatten(),[1,2,3])
@@ -98,8 +98,8 @@ def LinearSVC_onData():
     clf.fit(X_Dynamic, Y_Dynamic.flatten())
 
     precision,recall,fscore = common.checkAccuracy(clf.predict(X_DynamicTest),Y_DynamicTest,[1,2,3])
-    print common.createConfusionMatrix(clf.predict(X_DynamicTest).flatten(),Y_DynamicTest.flatten(),[1,2,3])
-    print fscore
+    print(common.createConfusionMatrix(clf.predict(X_DynamicTest).flatten(),Y_DynamicTest.flatten(),[1,2,3]))
+    print(fscore)
 #################################################################################################################################
     #Getting the dataset associated with Dynamic Activities on training 
     X_Dynamic,Y_Dynamic = common.getDataSubset(XFull,YFull.flatten(),[1,2,3])
@@ -114,8 +114,8 @@ def LinearSVC_onData():
     clf.fit(X_Dynamic, Y_Dynamic.flatten())
 
     precision,recall,fscore = common.checkAccuracy(clf.predict(X_DynamicTest),Y_DynamicTest,[1,2,3])
-    print common.createConfusionMatrix(clf.predict(X_DynamicTest).flatten(),Y_DynamicTest.flatten(),[1,2,3])
-    print fscore
+    print(common.createConfusionMatrix(clf.predict(X_DynamicTest).flatten(),Y_DynamicTest.flatten(),[1,2,3]))
+    print(fscore)
 #################################################################################################################################
     #Getting the dataset associated with Non-Dynamic Activities on training 
     X_NonDynamic,Y_NonDynamic = common.getDataSubset(XFull,YFull.flatten(),[4,5,6])
@@ -128,8 +128,8 @@ def LinearSVC_onData():
     clf.fit(X_NonDynamic, Y_NonDynamic.flatten())
 
     precision,recall,fscore = common.checkAccuracy(clf.predict(X_NonDynamicTest),Y_NonDynamicTest,[4,5,6])
-    print common.createConfusionMatrix(clf.predict(X_NonDynamicTest).flatten(),Y_NonDynamicTest.flatten(),[4,5,6])
-    print fscore 
+    print(common.createConfusionMatrix(clf.predict(X_NonDynamicTest).flatten(),Y_NonDynamicTest.flatten(),[4,5,6]))
+    print(fscore) 
 #################################################################################################################################   
     #Getting the dataset associated with Dynamic Activities on training 
     X_Dynamic,Y_Dynamic = common.getDataSubset(XFull,YFull.flatten(),[4,5,6])
@@ -144,8 +144,8 @@ def LinearSVC_onData():
     clf.fit(X_Dynamic, Y_Dynamic.flatten())
 
     precision,recall,fscore = common.checkAccuracy(clf.predict(X_DynamicTest),Y_DynamicTest,[4,5,6])
-    print common.createConfusionMatrix(clf.predict(X_DynamicTest).flatten(),Y_DynamicTest.flatten(),[4,5,6])
-    print fscore
+    print(common.createConfusionMatrix(clf.predict(X_DynamicTest).flatten(),Y_DynamicTest.flatten(),[4,5,6]))
+    print(fscore)
 #################################################################################################################################
     #Getting the dataset associated with Dynamic Activities on training 
     X_Dynamic,Y_Dynamic = common.getDataSubset(XFull,YFull.flatten(),[4,5,6])
@@ -160,8 +160,8 @@ def LinearSVC_onData():
     clf.fit(X_Dynamic, Y_Dynamic.flatten())
 
     precision,recall,fscore = common.checkAccuracy(clf.predict(X_DynamicTest),Y_DynamicTest,[4,5,6])
-    print common.createConfusionMatrix(clf.predict(X_DynamicTest).flatten(),Y_DynamicTest.flatten(),[4,5,6])
-    print fscore
+    print(common.createConfusionMatrix(clf.predict(X_DynamicTest).flatten(),Y_DynamicTest.flatten(),[4,5,6]))
+    print(fscore)
 #################################################################################################################################
 
 def LinearSVC_onAccData():
@@ -186,9 +186,9 @@ def LinearSVC_onAccData():
     clf.fit(X_Dynamic, Y_Dynamic.flatten())
 
     precision,recall,fscore = common.checkAccuracy(clf.predict(X_DynamicTest),Y_DynamicTest,[1,2,3,4,5,6])
-    print common.createConfusionMatrix(clf.predict(X_DynamicTest).flatten(),Y_DynamicTest.flatten(),[1,2,3,4,5,6])
+    print(common.createConfusionMatrix(clf.predict(X_DynamicTest).flatten(),Y_DynamicTest.flatten(),[1,2,3,4,5,6]))
 
-    print fscore
+    print(fscore)
 #################################################################################################################################
     #Getting the dataset associated with Dynamic Activities on training 
     X_Dynamic,Y_Dynamic = common.getDataSubset(XFull,YFull.flatten(),[1,2,3,4,5,6])
@@ -203,9 +203,9 @@ def LinearSVC_onAccData():
     clf.fit(X_Dynamic, Y_Dynamic.flatten())
 
     precision,recall,fscore = common.checkAccuracy(clf.predict(X_DynamicTest),Y_DynamicTest,[1,2,3,4,5,6])
-    print common.createConfusionMatrix(clf.predict(X_DynamicTest).flatten(),Y_DynamicTest.flatten(),[1,2,3,4,5,6])
+    print(common.createConfusionMatrix(clf.predict(X_DynamicTest).flatten(),Y_DynamicTest.flatten(),[1,2,3,4,5,6]))
 
-    print fscore
+    print(fscore)
 #################################################################################################################################
     #Getting the dataset associated with Dynamic Activities on training 
     X_Dynamic,Y_Dynamic = common.getDataSubset(XFull,YFull.flatten(),[1,2,3,4,5,6])
@@ -220,23 +220,23 @@ def LinearSVC_onAccData():
     clf.fit(X_Dynamic, Y_Dynamic.flatten())
 
     precision,recall,fscore = common.checkAccuracy(clf.predict(X_DynamicTest),Y_DynamicTest,[1,2,3,4,5,6])
-    print common.createConfusionMatrix(clf.predict(X_DynamicTest).flatten(),Y_DynamicTest.flatten(),[1,2,3,4,5,6])
+    print(common.createConfusionMatrix(clf.predict(X_DynamicTest).flatten(),Y_DynamicTest.flatten(),[1,2,3,4,5,6]))
 
-    print fscore
+    print(fscore)
 #################################################################################################################################
     #Getting the dataset associated with Dynamic Activities on training 
     X_Dynamic,Y_Dynamic = common.getDataSubset(XFull,YFull.flatten(),[1,2,3])
     #Getting the dataset associated with Dynamic Activities on testing
     X_DynamicTest,Y_DynamicTest = common.getDataSubset(XFullTest,YFullTest.flatten(),[1,2,3])
-    print len(X_DynamicTest),len(Y_DynamicTest)
+    print(len(X_DynamicTest),len(Y_DynamicTest))
 
     #Fitting data using LinearSVC classifier
     clf = SVC(kernel = "linear")
     clf.fit(X_Dynamic, Y_Dynamic.flatten())
 
     precision,recall,fscore = common.checkAccuracy(clf.predict(X_DynamicTest),Y_DynamicTest,[1,2,3])
-    print common.createConfusionMatrix(clf.predict(X_DynamicTest).flatten(),Y_DynamicTest.flatten(),[1,2,3])
-    print fscore
+    print(common.createConfusionMatrix(clf.predict(X_DynamicTest).flatten(),Y_DynamicTest.flatten(),[1,2,3]))
+    print(fscore)
 #################################################################################################################################
     #Getting the dataset associated with Dynamic Activities on training 
     X_Dynamic,Y_Dynamic = common.getDataSubset(XFull,YFull.flatten(),[1,2,3])
@@ -251,8 +251,8 @@ def LinearSVC_onAccData():
     clf.fit(X_Dynamic, Y_Dynamic.flatten())
 
     precision,recall,fscore = common.checkAccuracy(clf.predict(X_DynamicTest),Y_DynamicTest,[1,2,3])
-    print common.createConfusionMatrix(clf.predict(X_DynamicTest).flatten(),Y_DynamicTest.flatten(),[1,2,3])
-    print fscore
+    print(common.createConfusionMatrix(clf.predict(X_DynamicTest).flatten(),Y_DynamicTest.flatten(),[1,2,3]))
+    print(fscore)
 #################################################################################################################################
     #Getting the dataset associated with Dynamic Activities on training 
     X_Dynamic,Y_Dynamic = common.getDataSubset(XFull,YFull.flatten(),[1,2,3])
@@ -267,8 +267,8 @@ def LinearSVC_onAccData():
     clf.fit(X_Dynamic, Y_Dynamic.flatten())
 
     precision,recall,fscore = common.checkAccuracy(clf.predict(X_DynamicTest),Y_DynamicTest,[1,2,3])
-    print common.createConfusionMatrix(clf.predict(X_DynamicTest).flatten(),Y_DynamicTest.flatten(),[1,2,3])
-    print fscore
+    print(common.createConfusionMatrix(clf.predict(X_DynamicTest).flatten(),Y_DynamicTest.flatten(),[1,2,3]))
+    print(fscore)
 #################################################################################################################################
     #Getting the dataset associated with Non-Dynamic Activities on training 
     X_NonDynamic,Y_NonDynamic = common.getDataSubset(XFull,YFull.flatten(),[4,5,6])
@@ -281,8 +281,8 @@ def LinearSVC_onAccData():
     clf.fit(X_NonDynamic, Y_NonDynamic.flatten())
 
     precision,recall,fscore = common.checkAccuracy(clf.predict(X_NonDynamicTest),Y_NonDynamicTest,[4,5,6])
-    print common.createConfusionMatrix(clf.predict(X_NonDynamicTest).flatten(),Y_NonDynamicTest.flatten(),[4,5,6])
-    print fscore 
+    print(common.createConfusionMatrix(clf.predict(X_NonDynamicTest).flatten(),Y_NonDynamicTest.flatten(),[4,5,6]))
+    print(fscore) 
 #################################################################################################################################   
     #Getting the dataset associated with Dynamic Activities on training 
     X_Dynamic,Y_Dynamic = common.getDataSubset(XFull,YFull.flatten(),[4,5,6])
@@ -297,8 +297,8 @@ def LinearSVC_onAccData():
     clf.fit(X_Dynamic, Y_Dynamic.flatten())
 
     precision,recall,fscore = common.checkAccuracy(clf.predict(X_DynamicTest),Y_DynamicTest,[4,5,6])
-    print common.createConfusionMatrix(clf.predict(X_DynamicTest).flatten(),Y_DynamicTest.flatten(),[4,5,6])
-    print fscore
+    print(common.createConfusionMatrix(clf.predict(X_DynamicTest).flatten(),Y_DynamicTest.flatten(),[4,5,6]))
+    print(fscore)
 #################################################################################################################################
     #Getting the dataset associated with Dynamic Activities on training 
     X_Dynamic,Y_Dynamic = common.getDataSubset(XFull,YFull.flatten(),[4,5,6])
@@ -313,8 +313,8 @@ def LinearSVC_onAccData():
     clf.fit(X_Dynamic, Y_Dynamic.flatten())
 
     precision,recall,fscore = common.checkAccuracy(clf.predict(X_DynamicTest),Y_DynamicTest,[4,5,6])
-    print common.createConfusionMatrix(clf.predict(X_DynamicTest).flatten(),Y_DynamicTest.flatten(),[4,5,6])
-    print fscore
+    print(common.createConfusionMatrix(clf.predict(X_DynamicTest).flatten(),Y_DynamicTest.flatten(),[4,5,6]))
+    print(fscore)
 #################################################################################################################################
 
 def LinearSVC_onGyroData():
@@ -339,9 +339,9 @@ def LinearSVC_onGyroData():
     clf.fit(X_Dynamic, Y_Dynamic.flatten())
 
     precision,recall,fscore = common.checkAccuracy(clf.predict(X_DynamicTest),Y_DynamicTest,[1,2,3,4,5,6])
-    print common.createConfusionMatrix(clf.predict(X_DynamicTest).flatten(),Y_DynamicTest.flatten(),[1,2,3,4,5,6])
+    print(common.createConfusionMatrix(clf.predict(X_DynamicTest).flatten(),Y_DynamicTest.flatten(),[1,2,3,4,5,6]))
 
-    print fscore
+    print(fscore)
 #################################################################################################################################
     #Getting the dataset associated with Dynamic Activities on training 
     X_Dynamic,Y_Dynamic = common.getDataSubset(XFull,YFull.flatten(),[1,2,3,4,5,6])
@@ -356,9 +356,9 @@ def LinearSVC_onGyroData():
     clf.fit(X_Dynamic, Y_Dynamic.flatten())
 
     precision,recall,fscore = common.checkAccuracy(clf.predict(X_DynamicTest),Y_DynamicTest,[1,2,3,4,5,6])
-    print common.createConfusionMatrix(clf.predict(X_DynamicTest).flatten(),Y_DynamicTest.flatten(),[1,2,3,4,5,6])
+    print(common.createConfusionMatrix(clf.predict(X_DynamicTest).flatten(),Y_DynamicTest.flatten(),[1,2,3,4,5,6]))
 
-    print fscore
+    print(fscore)
 #################################################################################################################################
     #Getting the dataset associated with Dynamic Activities on training 
     X_Dynamic,Y_Dynamic = common.getDataSubset(XFull,YFull.flatten(),[1,2,3,4,5,6])
@@ -373,23 +373,23 @@ def LinearSVC_onGyroData():
     clf.fit(X_Dynamic, Y_Dynamic.flatten())
 
     precision,recall,fscore = common.checkAccuracy(clf.predict(X_DynamicTest),Y_DynamicTest,[1,2,3,4,5,6])
-    print common.createConfusionMatrix(clf.predict(X_DynamicTest).flatten(),Y_DynamicTest.flatten(),[1,2,3,4,5,6])
+    print(common.createConfusionMatrix(clf.predict(X_DynamicTest).flatten(),Y_DynamicTest.flatten(),[1,2,3,4,5,6]))
 
-    print fscore
+    print(fscore)
 #################################################################################################################################
     #Getting the dataset associated with Dynamic Activities on training 
     X_Dynamic,Y_Dynamic = common.getDataSubset(XFull,YFull.flatten(),[1,2,3])
     #Getting the dataset associated with Dynamic Activities on testing
     X_DynamicTest,Y_DynamicTest = common.getDataSubset(XFullTest,YFullTest.flatten(),[1,2,3])
-    print len(X_DynamicTest),len(Y_DynamicTest)
+    print(len(X_DynamicTest),len(Y_DynamicTest))
 
     #Fitting data using LinearSVC classifier
     clf = SVC(kernel = "linear")
     clf.fit(X_Dynamic, Y_Dynamic.flatten())
 
     precision,recall,fscore = common.checkAccuracy(clf.predict(X_DynamicTest),Y_DynamicTest,[1,2,3])
-    print common.createConfusionMatrix(clf.predict(X_DynamicTest).flatten(),Y_DynamicTest.flatten(),[1,2,3])
-    print fscore
+    print(common.createConfusionMatrix(clf.predict(X_DynamicTest).flatten(),Y_DynamicTest.flatten(),[1,2,3]))
+    print(fscore)
 #################################################################################################################################
     #Getting the dataset associated with Dynamic Activities on training 
     X_Dynamic,Y_Dynamic = common.getDataSubset(XFull,YFull.flatten(),[1,2,3])
@@ -404,8 +404,8 @@ def LinearSVC_onGyroData():
     clf.fit(X_Dynamic, Y_Dynamic.flatten())
 
     precision,recall,fscore = common.checkAccuracy(clf.predict(X_DynamicTest),Y_DynamicTest,[1,2,3])
-    print common.createConfusionMatrix(clf.predict(X_DynamicTest).flatten(),Y_DynamicTest.flatten(),[1,2,3])
-    print fscore
+    print(common.createConfusionMatrix(clf.predict(X_DynamicTest).flatten(),Y_DynamicTest.flatten(),[1,2,3]))
+    print(fscore)
 #################################################################################################################################
     #Getting the dataset associated with Dynamic Activities on training 
     X_Dynamic,Y_Dynamic = common.getDataSubset(XFull,YFull.flatten(),[1,2,3])
@@ -420,8 +420,8 @@ def LinearSVC_onGyroData():
     clf.fit(X_Dynamic, Y_Dynamic.flatten())
 
     precision,recall,fscore = common.checkAccuracy(clf.predict(X_DynamicTest),Y_DynamicTest,[1,2,3])
-    print common.createConfusionMatrix(clf.predict(X_DynamicTest).flatten(),Y_DynamicTest.flatten(),[1,2,3])
-    print fscore
+    print(common.createConfusionMatrix(clf.predict(X_DynamicTest).flatten(),Y_DynamicTest.flatten(),[1,2,3]))
+    print(fscore)
 #################################################################################################################################
     #Getting the dataset associated with Non-Dynamic Activities on training 
     X_NonDynamic,Y_NonDynamic = common.getDataSubset(XFull,YFull.flatten(),[4,5,6])
@@ -434,8 +434,8 @@ def LinearSVC_onGyroData():
     clf.fit(X_NonDynamic, Y_NonDynamic.flatten())
 
     precision,recall,fscore = common.checkAccuracy(clf.predict(X_NonDynamicTest),Y_NonDynamicTest,[4,5,6])
-    print common.createConfusionMatrix(clf.predict(X_NonDynamicTest).flatten(),Y_NonDynamicTest.flatten(),[4,5,6])
-    print fscore 
+    print(common.createConfusionMatrix(clf.predict(X_NonDynamicTest).flatten(),Y_NonDynamicTest.flatten(),[4,5,6]))
+    print(fscore) 
 #################################################################################################################################   
     #Getting the dataset associated with Dynamic Activities on training 
     X_Dynamic,Y_Dynamic = common.getDataSubset(XFull,YFull.flatten(),[4,5,6])
@@ -450,8 +450,8 @@ def LinearSVC_onGyroData():
     clf.fit(X_Dynamic, Y_Dynamic.flatten())
 
     precision,recall,fscore = common.checkAccuracy(clf.predict(X_DynamicTest),Y_DynamicTest,[4,5,6])
-    print common.createConfusionMatrix(clf.predict(X_DynamicTest).flatten(),Y_DynamicTest.flatten(),[4,5,6])
-    print fscore
+    print(common.createConfusionMatrix(clf.predict(X_DynamicTest).flatten(),Y_DynamicTest.flatten(),[4,5,6]))
+    print(fscore)
 #################################################################################################################################
     #Getting the dataset associated with Dynamic Activities on training 
     X_Dynamic,Y_Dynamic = common.getDataSubset(XFull,YFull.flatten(),[4,5,6])
@@ -466,8 +466,8 @@ def LinearSVC_onGyroData():
     clf.fit(X_Dynamic, Y_Dynamic.flatten())
 
     precision,recall,fscore = common.checkAccuracy(clf.predict(X_DynamicTest),Y_DynamicTest,[4,5,6])
-    print common.createConfusionMatrix(clf.predict(X_DynamicTest).flatten(),Y_DynamicTest.flatten(),[4,5,6])
-    print fscore
+    print(common.createConfusionMatrix(clf.predict(X_DynamicTest).flatten(),Y_DynamicTest.flatten(),[4,5,6]))
+    print(fscore)
 #################################################################################################################################
 
 

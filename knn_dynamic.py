@@ -7,7 +7,7 @@ import common
 
 ###########################################################
 
-print "Parsing"
+print("Parsing")
 
 X_train = common.parseFile( 'X_train.txt')
 Y_train = common.parseFile( 'Y_train.txt')
@@ -20,9 +20,9 @@ Y_test= Y_test.flatten()
 Y_test = common.convertLabel( Y_test )
 
 
-print "Done"
+print("Done")
 
-print "Fitting Data"
+print("Fitting Data")
 
 ne = []
 mean = []
@@ -34,18 +34,18 @@ for i in range(5,55,5):
 	clf = neighbors.KNeighborsClassifier(n_neighbors, weights='distance')
 	clf.fit(X_train, Y_train)
 
-	print"Done"
+	print("Done")
 
-	print "Predicting"
+	print("Predicting")
 
 	predicted = []
 
 	for x_test in X_test:
 		predicted.append( clf.predict(x_test)[0] )
 
-	print "Done"
+	print("Done")
 
-	print "Checking accuracy"
+	print("Checking accuracy")
 
 	precision,recall,f_score = common.checkAccuracy( Y_test , predicted , [1,0]) # Must provide list of relavent labels #
 
@@ -53,8 +53,8 @@ for i in range(5,55,5):
 	mean.append( np.mean(f_score))
 	
 
-print mean
-print "Done"
+print(mean)
+print("Done")
 	
 ###########################################################
 

@@ -20,7 +20,7 @@ def parseFile( file_name ):
 
 		feature = []
 
-		for index in xrange( feature_length ):
+		for index in range( feature_length ):
 			try:
 				feature.append( float( raw_feature[index] ))
 			except:
@@ -42,7 +42,7 @@ def checkAccuracy( original , predicted , labels ):
 	recall = []
 	f_score = []
 	
-	for i in xrange(len(original)):
+	for i in range(len(original)):
 		
 		if original[i] == predicted[i]:
 			TP[str(int(original[i]))].append(1)			 
@@ -80,7 +80,7 @@ def convertLabel(labels, posLabels, Neglabels):
 		elif label in Neglabels:
 			dynamic.append( 0 )
 		else:
-			print "Unknown Label: Good Gawd :)"
+			print("Unknown Label: Good Gawd :)")
 	return np.asarray(dynamic)
 
 ###################################################################################
@@ -101,12 +101,12 @@ def createConfusionMatrix(predictedYLabels,originalYLabels,labelList):
     #print len(predictedYLabels)
 
     if len(originalYLabels) != len(predictedYLabels):
-        print 'Error'
+        print('Error')
         return
 
-    for i in xrange(len(originalYLabels)):
+    for i in range(len(originalYLabels)):
         if (predictedYLabels[i] not in labelList) or (originalYLabels[i] not in labelList):
-            print 'Error'
+            print('Error')
             return
         else:
             confusionMatrix[labelList.index(originalYLabels[i]),labelList.index(predictedYLabels[i])] = confusionMatrix[labelList.index(originalYLabels[i]),labelList.index(predictedYLabels[i])] + 1
@@ -163,7 +163,7 @@ def getSampleWeights( X_train, Y_train , labels):
 		cov.append( cov_A )	
 
 		
-	for i in xrange( len(X_train) ):
+	for i in range( len(X_train) ):
 
 		index = labels.index( int(Y_train[i]) )
 		this_mean = mean[ index ]
@@ -204,16 +204,16 @@ def getPowerK( X_features, k):
 def getValidationDataset(X_full,Y_full,labels = [1,2,3,4,5,6],splitRatio = 3):
     fullDatasetSize = 7352
     if (len(X_full) != len(Y_full)) and (len(Y_full) !=fullDatasetSize):
-        print "Error: Not the full dataset or X and Y are unequal"
+        print("Error: Not the full dataset or X and Y are unequal")
         return
     else:
         indexLists = dict()
         for i in labels:
             indexLists[i] = []
-        for j in xrange(fullDatasetSize):
+        for j in range(fullDatasetSize):
             if Y_full[j] in labels:
                 indexLists[Y_full[j]].append(j)
-        for i in labels: print len(indexLists[i])
+        for i in labels: print(len(indexLists[i]))
 
         X_d = []
         Y_d = []
@@ -222,19 +222,19 @@ def getValidationDataset(X_full,Y_full,labels = [1,2,3,4,5,6],splitRatio = 3):
         for j in labels:
             datasetSizeforLabel = len(indexLists[j])
             ValidationDatasetSizeforLabel = datasetSizeforLabel/(splitRatio + 1)
-            print datasetSizeforLabel,ValidationDatasetSizeforLabel
+            print(datasetSizeforLabel,ValidationDatasetSizeforLabel)
             taken = []
-            for i in xrange(ValidationDatasetSizeforLabel):
+            for i in range(ValidationDatasetSizeforLabel):
                 from random import randint
                 while True: 
                     rand = randint(0,datasetSizeforLabel)
                     if rand not in taken: 
                         taken.append(rand)
                         break
-            print taken
-            print indexLists[j]
+            print(taken)
+            print(indexLists[j])
             cnt = 0
-            for i in xrange(datasetSizeforLabel):
+            for i in range(datasetSizeforLabel):
                 if i in taken:
                     cnt = cnt +1 
                     X_v.append(X_full[indexLists[j][i],:])
@@ -242,7 +242,7 @@ def getValidationDataset(X_full,Y_full,labels = [1,2,3,4,5,6],splitRatio = 3):
                 else:
                     X_d.append(X_full[indexLists[j][i],:])
                     Y_d.append(Y_full[indexLists[j][i]])    
-            print cnt
+            print(cnt)
 
     #return np.asarray(X_v),np.asarray(Y_v),np.asarray(X_d),np.asarray(Y_d)
     f = open('X_Validation.txt','w+')
@@ -311,7 +311,7 @@ def getSubjectData(inputXData,inputYData,requiredSubjects,subjectData = None):
     if subjectData is None:
         subjectData = parseFile('../UCI HAR Dataset/train/subject_train.txt')
     
-    for i in xrange(len(subjectData)):
+    for i in range(len(subjectData)):
         if int(subjectData[i]) in requiredSubjects:
             requiredSubjectDataIndexList.append(i);
     return inputXData[requiredSubjectDataIndexList,:], inputYData[requiredSubjectDataIndexList],subjectData[requiredSubjectDataIndexList]

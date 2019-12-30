@@ -1,7 +1,7 @@
 import numpy as np
 import warnings
 
-from itertools import cycle, izip
+from itertools import cycle
 
 from sklearn.utils import gen_even_slices
 from sklearn.utils import shuffle
@@ -90,7 +90,7 @@ class BaseMLP(BaseEstimator):
         delta_o = np.empty((self.batch_size, self.n_outs))
 
         # main loop
-        for i, batch_slice in izip(xrange(n_iterations), cycle(batch_slices)):
+        for i, batch_slice in zip(range(n_iterations), cycle(batch_slices)):
             self._forward(i, X, batch_slice, x_hidden, x_output)
             self._backward(i, X, y, batch_slice, x_hidden, x_output, delta_o, delta_h)
         return self
@@ -131,7 +131,7 @@ class BaseMLP(BaseEstimator):
             raise ValueError("Unknown combination of output function and error.")
 
         if self.verbose > 0:
-            print(np.linalg.norm(delta_o / self.batch_size))
+            print((np.linalg.norm(delta_o / self.batch_size)))
         delta_h[:] = np.dot(delta_o, self.weights2_.T)
 
         # update weights
@@ -185,7 +185,7 @@ def test_classification():
     mlp = MLPClassifier()
     mlp.fit(X, y)
     training_score = mlp.score(X, y)
-    print("training accuracy: %f" % training_score)
+    print(("training accuracy: %f" % training_score))
     assert(training_score > .95)
 
 

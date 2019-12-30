@@ -23,7 +23,7 @@ def Adaboost_onFullDataset():
 
     #Testing the results
     precision,recall,fscore = common.checkAccuracy(clf.predict(XFullTest),YFullTest,[1,2,3,4,5,6])
-    print "For the whole dataset",fscore
+    print("For the whole dataset",fscore)
 
 def Adaboost_onNonDynamicData():
     #Parsing Full training dataset
@@ -45,15 +45,15 @@ def Adaboost_onNonDynamicData():
         clf.fit(X_NonDynamic, Y_NonDynamic.flatten())
 
         precision,recall,fscore = common.checkAccuracy(clf.predict(X_NonDynamicTest),Y_NonDynamicTest,[4,5,6])
-        print "For the NonDynamic dataset with n_estimators = ",i
+        print("For the NonDynamic dataset with n_estimators = ",i)
         common.createConfusionMatrix(clf.predict(X_NonDynamicTest).flatten(),Y_NonDynamicTest.flatten(),[4,5,6])
-        print fscore
+        print(fscore)
 
     #Getting the dataset associated with Dynamic Activities on training 
     X_Dynamic,Y_Dynamic = common.getDataSubset(XFull,YFull.flatten(),[1,2,3])
     #Getting the dataset associated with Dynamic Activities on testing
     X_DynamicTest,Y_DynamicTest = common.getDataSubset(XFullTest,YFullTest.flatten(),[1,2,3])
-    print len(X_DynamicTest),len(Y_DynamicTest)
+    print(len(X_DynamicTest),len(Y_DynamicTest))
 
     #Fitting data using Adaboost classifier
     clf = ensemble.AdaBoostClassifier(n_estimators = 300)
@@ -62,7 +62,7 @@ def Adaboost_onNonDynamicData():
     precision,recall,fscore = common.checkAccuracy(clf.predict(X_DynamicTest),Y_DynamicTest,[1,2,3])
     common.createConfusionMatrix(clf.predict(X_DynamicTest).flatten(),Y_DynamicTest.flatten(),[1,2,3])
 
-    print fscore
+    print(fscore)
 
 if __name__=='__main__':
     #Adaboost_onFullDataset()

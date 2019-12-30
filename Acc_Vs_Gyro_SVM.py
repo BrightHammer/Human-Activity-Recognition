@@ -5,7 +5,7 @@ import math
 import numpy as np
 from sklearn import *
 
-print "\n"
+print("\n")
 
 # Parse the files
 X_train=common.parseFile('X_train.txt')				 
@@ -43,4 +43,4 @@ Y_predict=clf.predict(X_test)
 
 # Check and print accuracy
 prec, rec, f_score = common.checkAccuracy(Y_test, Y_predict, [4,5,6]) 
-print f_score
+print(f_score)

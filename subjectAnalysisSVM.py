@@ -8,7 +8,7 @@ import scipy
 from collections import Counter
 import copy
 
-print "\n"
+print("\n")
 
 #######################
 # Parse the files #
@@ -31,7 +31,7 @@ Y_test = Y_test.flatten()
 #######################
 # Pre-processing of data #
 
-print "Computing means and covariances"
+print("Computing means and covariances")
 
 trainSubjects = [1,3,5,6,7,8,11,14,15,16,17,19,21,22,23,25,26,27,28,29,30]
 requiredLabels = [4,5,6]
@@ -56,21 +56,21 @@ for i in trainSubjects:
 		cov_array.append(cov)
 		label_array.append( j )
 
-print "Done"
+print("Done")
 
 
-print "Pre_processing Training Data"
+print("Pre_processing Training Data")
 
 X_train , Y_train = common.getDataSubset(X_train, Y_train, requiredLabels)
 
 featureArray = []  
 trainSubjects = [1,3,5,6,7,8,11,14,15,16,17,19,21,22,23,25,26,27,28,29,30]
 
-for i in xrange(len(X_train)):
+for i in range(len(X_train)):
 	new_feature_1 = list(X_train[i])
 	new_feature_2 =  [0]*len(trainSubjects)*len(requiredLabels)
 
-	for j in xrange(len(mean_array)):
+	for j in range(len(mean_array)):
 		distance = np.sqrt(np.sum((mean_array[j]-new_feature_1)**2))
 
 		new_feature_2[j] = distance 
@@ -81,21 +81,21 @@ for i in xrange(len(X_train)):
 
 X_train_expanded = np.asarray(featureArray)
 
-print "Done"
+print("Done")
 
 
-print "Pre_processing Test Data"
+print("Pre_processing Test Data")
 
 X_test  = common.getPowerK( X_test, [1,2])  
 X_test , Y_test = common.getDataSubset(X_test, Y_test, requiredLabels)
 
 featureArray = []  
 
-for i in xrange(len(X_test)):
+for i in range(len(X_test)):
 	new_feature_1 = list(X_test[i])
 	new_feature_2 =  [0]*len(trainSubjects)*len(requiredLabels)
 
-	for j in xrange(len(mean_array)):
+	for j in range(len(mean_array)):
 		distance = np.sqrt(np.sum((mean_array[j]-new_feature_1)**2))
 		new_feature_2[j] = distance 
 
@@ -120,14 +120,14 @@ for i in xrange(len(X_test)):
 
 X_test_expanded = np.asarray(featureArray)
 
-print "Done"
+print("Done")
 
-print len(featureArray[0])
+print(len(featureArray[0]))
 
 #######################
 # Training an SVM#
 
-print "Training an SVM"
+print("Training an SVM")
 
 #sample_weights = common.getSampleWeights(X_train,Y_train, requiredLabels)
 
@@ -135,20 +135,20 @@ clf = svm.SVC(kernel='linear')
 clf.fit(X_train_expanded, Y_train) #,sample_weight = sample_weights                             
 Y_predict=clf.predict(X_test_expanded)
 
-print "Done"
+print("Done")
 
 #######################
 # Check Accuracy
 
-print "Checking accuracy"
+print("Checking accuracy")
 
 precision,recall, f_score = common.checkAccuracy( Y_test , Y_predict , requiredLabels )
-print f_score
+print(f_score)
 		
 confusionMatrix = common.createConfusionMatrix(Y_predict ,Y_test,requiredLabels)
-print confusionMatrix
+print(confusionMatrix)
 
-print "Done"
+print("Done")
 
 ######################################################################
 

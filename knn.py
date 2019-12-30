@@ -8,19 +8,19 @@ import common
 
 ###########################################################
 
-print "Parsing"
+print ("Parsing")
 
-X_train = common.parseFile( 'X_train.txt')
-Y_train = common.parseFile( 'Y_train.txt')
+X_train = common.parseFile( '../UCI HAR Dataset/train/X_train.txt')
+Y_train = common.parseFile( '../UCI HAR Dataset/train/Y_train.txt')
 Y_train = Y_train.flatten()
 
-X_test = common.parseFile( 'X_test.txt')
-Y_test = common.parseFile( 'Y_test.txt')
+X_test = common.parseFile( '../UCI HAR Dataset/test/X_test.txt')
+Y_test = common.parseFile( '../UCI HAR Dataset/test/Y_test.txt')
 Y_test= Y_test.flatten()
 
-print "Done"
+print ("Done")
 
-print "Fitting Data"
+print("Fitting Data")
 
 ne = []
 mean = []
@@ -31,18 +31,18 @@ for i in range(5,60,5):
 	clf = neighbors.KNeighborsClassifier(n_neighbors, weights='distance')
 	clf.fit(X_train, Y_train)
 
-	print"Done"
+	print("Done")
 
-	print "Predicting"
+	print("Predicting")
 
 	predicted = []
 
 	for x_test in X_test:
 		predicted.append( clf.predict(x_test)[0] )
 
-	print "Done"
+	print("Done")
 
-	print "Checking accuracy"
+	print("Checking accuracy")
 
 	precision,recall,f_score = common.checkAccuracy( Y_test , predicted , [1,2,3,4,5,6]) # Must provide list of relavent labels #
 
@@ -50,8 +50,8 @@ for i in range(5,60,5):
 	mean.append( np.mean(f_score))
 	
 
-print mean
-print "Done"
+print(mean)
+print("Done")
 	
 ###########################################################
 
