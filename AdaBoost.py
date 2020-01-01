@@ -1,7 +1,7 @@
 #Author: Nitin A Jain
 
 import numpy as np
-from sklearn.lda import LDA
+from sklearn.discriminant_analysis import LinearDiscriminantAnalysis as LDA
 from sklearn import tree
 from sklearn import ensemble
 from sklearn import svm
