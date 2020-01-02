@@ -19,7 +19,8 @@ def parseFile( file_name ):
 		raw_feature = line.split(" ")
 
 		feature = []
-
+        
+        # 空格作为str是不能append到里面去的，所以这里空格不影响结果
 		for index in range( feature_length ):
 			try:
 				feature.append( float( raw_feature[index] ))
@@ -59,6 +60,7 @@ def checkAccuracy( original , predicted , labels ):
 		r = float( len(TP[str(label)]) ) / ( len(TP[str(label)]) + len(FN[str(label)]))
 		recall.append( r  )
 
+        # F1度量
 		fs = float( 2*p*r ) / (p+r)				
 		f_score.append( fs)
 
@@ -68,7 +70,7 @@ def checkAccuracy( original , predicted , labels ):
 ###################################################################################
 
 ## Distinguishes labels as Dynamic[1]/Non-Dynamic[0] ## 
-
+# 把给定的labels转为二值问题
 def convertLabel(labels, posLabels, Neglabels):
 	dynamic = []
 
@@ -85,6 +87,7 @@ def convertLabel(labels, posLabels, Neglabels):
 
 ###################################################################################
 # This function takes in input 2D array of inputData(X) and 1D array of inputLabels(Y) and returns subset of those data which belong to requiredLabels(Ex: [1,4,5]). Required Labels is a 1D list. Returns 2D array of subData (X'), 1D array of subLabels(Y')
+# 得到子数据序列,把RequiredLabels里面的数据都拼在一起
 def getDataSubset(inputData, inputLabels, RequiredLabels): 
 	subData=[]
 	subLabels=[]
@@ -94,8 +97,8 @@ def getDataSubset(inputData, inputLabels, RequiredLabels):
 			subLabels.append(inputLabels[loopVar])
 	return np.asarray(subData), np.asarray(subLabels)
 ###################################################################################
-
 #This function creates the Confusion Matrix for the predicted model
+# 简化了混淆矩阵的代码
 def createConfusionMatrix(predictedYLabels,originalYLabels,labelList):
     confusionMatrix = np.zeros((len(labelList),len(labelList)))
     #print len(predictedYLabels)
@@ -109,14 +112,14 @@ def createConfusionMatrix(predictedYLabels,originalYLabels,labelList):
             print('Error')
             return
         else:
-            confusionMatrix[labelList.index(originalYLabels[i]),labelList.index(predictedYLabels[i])] = confusionMatrix[labelList.index(originalYLabels[i]),labelList.index(predictedYLabels[i])] + 1
+            confusionMatrix[labelList.index(originalYLabels[i]),labelList.index(predictedYLabels[i])] += 1
     return confusionMatrix
 
 
 #############################################################################
 
 #This function returns the Mahalanobis distance between two given class 1 TO class 2 with respect to class 1's variance (i.e.) Mahalanobis Distance). NOTE: labels is a LIST containing only TWO labels.
-
+# 马氏距离
 def getMahalanobisDistance( X_train, Y_train, labels ):
 
 	labelA = labels[0]
@@ -180,7 +183,8 @@ def getSampleWeights( X_train, Y_train , labels):
 #############################################################################
 
 #This function returns the the input array whose entries are raised by power list 'k'. 
-
+# x_features = [[1,2],    k = [1,2]  则输出为[[ 1,  2,  1,  4],
+#               [3,4]]                       [ 3,  4,  9, 16]]
 def getPowerK( X_features, k):
 
 	X_features_new = []
@@ -269,7 +273,7 @@ def getValidationDataset(X_full,Y_full,labels = [1,2,3,4,5,6],splitRatio = 3):
 
 ###################################################################################
 ## Returns the parsed file in the form of an array containing only Accelero features##
-
+# 根据features.txt的特征顺序去训练数据中找出对应的加速度数据
 def getAccFeatures( X_train, features_file = '../UCI HAR Dataset/features.txt'):
     f = open(features_file)
     lines = f.readlines()
@@ -288,7 +292,7 @@ def getAccFeatures( X_train, features_file = '../UCI HAR Dataset/features.txt'):
 
 ###################################################################################
 ## Returns the parsed file in the form of an array containing only Gyro features##
-
+# 根据features.txt的特征顺序去训练数据中找出对应的角速度数据
 def getGyroFeatures( X_train,feature_file='../UCI HAR Dataset/features.txt'):
     f = open(feature_file)
     lines = f.readlines()
@@ -306,6 +310,7 @@ def getGyroFeatures( X_train,feature_file='../UCI HAR Dataset/features.txt'):
 
 ##################################################################################
 ## returns data for requested subjects
+# 根据实验人物进行数据筛选
 def getSubjectData(inputXData,inputYData,requiredSubjects,subjectData = None):
     requiredSubjectDataIndexList = []
     if subjectData is None:
