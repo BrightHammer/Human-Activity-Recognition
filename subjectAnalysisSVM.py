@@ -13,14 +13,14 @@ print("\n")
 #######################
 # Parse the files #
 
-X_train=common.parseFile('X_train.txt')				 
-Y_train=common.parseFile('Y_train.txt')	
+X_train=common.parseFile('../UCI HAR Dataset/train/X_train.txt')				 
+Y_train=common.parseFile('../UCI HAR Dataset/train/Y_train.txt')	
 Y_train = Y_train.flatten()
-subject_train = common.parseFile('subject_train.txt')
+subject_train = common.parseFile('../UCI HAR Dataset/train/subject_train.txt')
 subject_train = subject_train.flatten()
 
-X_test=common.parseFile('X_test.txt')			
-Y_test=common.parseFile('Y_test.txt')
+X_test=common.parseFile('../UCI HAR Dataset/test/X_test.txt')			
+Y_test=common.parseFile('../UCI HAR Dataset/test/Y_test.txt')
 Y_test = Y_test.flatten()	
 
 ######################
@@ -32,10 +32,10 @@ Y_test = Y_test.flatten()
 # Pre-processing of data #
 
 print("Computing means and covariances")
-
+print("Get trainSubjects&noDynamic static data...")
 trainSubjects = [1,3,5,6,7,8,11,14,15,16,17,19,21,22,23,25,26,27,28,29,30]
-requiredLabels = [4,5,6]
-
+requiredLabels = [1,2,3,4,5,6]
+# 每一行原数据用上他们的幂次形成2倍大小的特征矩阵
 X_train = common.getPowerK( X_train, [1,2])
 
 mean_array = []
@@ -60,7 +60,7 @@ print("Done")
 
 
 print("Pre_processing Training Data")
-
+# 每一行原数据加上他们的欧氏距离,特征矩阵  +len(trainSubjects)*len(requiredLabels)
 X_train , Y_train = common.getDataSubset(X_train, Y_train, requiredLabels)
 
 featureArray = []  

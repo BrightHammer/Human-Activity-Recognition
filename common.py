@@ -138,7 +138,7 @@ def getMahalanobisDistance( X_train, Y_train, labels ):
 #############################################################################
 
 #This function returns the Mean and Covariance of tha data of a particular label. 'label' requires a single number
-
+# 计算的是均值和协方差矩阵
 def getDistribution( X_train, Y_train, label ):
 
 	X_A , Y_A = getDataSubset(X_train, Y_train, [label])
