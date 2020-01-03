@@ -34,7 +34,7 @@ def parseFile( file_name ):
 ###################################################################################
 ## Given two LISTS- original and predicted , returns the precision, accuracy, fscore
 
-def checkAccuracy( original , predicted , labels ):
+def checkAccuracy( original , predicted , labels=[1,2,3,4,5,6] ):
 	TP = defaultdict(list)
 	FP = defaultdict(list)
 	FN = defaultdict(list)
@@ -99,7 +99,7 @@ def getDataSubset(inputData, inputLabels, RequiredLabels):
 ###################################################################################
 #This function creates the Confusion Matrix for the predicted model
 # 简化了混淆矩阵的代码
-def createConfusionMatrix(predictedYLabels,originalYLabels,labelList):
+def createConfusionMatrix(predictedYLabels,originalYLabels,labelList=[1,2,3,4,5,6]):
     confusionMatrix = np.zeros((len(labelList),len(labelList)))
     #print len(predictedYLabels)
 

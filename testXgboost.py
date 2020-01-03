@@ -42,7 +42,7 @@ plst = params.items()
  
 # 生成数据集格式
 dtrain = xgb.DMatrix(X_train,y_train)
-num_rounds = 100
+num_rounds = 5000
 # xgboost模型训练
 model = xgb.train(plst,dtrain,num_rounds)
  
@@ -57,3 +57,5 @@ print('accuarcy:%.2f%%'%(accuracy*100))
 # 显示重要特征
 plot_importance(model)
 plt.show()
+model.save_model('test10000.model')
+model.dump_model('dump.raw.txt','featmap.txt')
