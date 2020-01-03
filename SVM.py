@@ -12,6 +12,7 @@ from sklearn import *
 from collections import defaultdict
 import common
 from matplotlib import pyplot as plt
+from visualization import *
 # Prints the numbers in float instead of scientific format
 set_printoptions(suppress=True)
 
@@ -48,7 +49,7 @@ sample_weights=common.getSampleWeights( X_nondynamic_train, Y_nondynamic_train ,
 ################################################################################################
 #Code used for Dynamic Data - Commented for now
 
-clf = svm.LinearSVC(multi_class='crammer_singer')
+""" clf = svm.LinearSVC(multi_class='crammer_singer')
 clf.fit(X_dynamic_train, Y_dynamic_train)
 Y_predict_dynamic=clf.predict(X_dynamic_test)
 print(type(Y_predict_dynamic), size(Y_predict_dynamic), Y_predict_dynamic)
@@ -56,7 +57,7 @@ prec, rec, f_score=common.checkAccuracy(Y_dynamic_test, Y_predict_dynamic, [1,2,
 print(prec)
 print(rec)
 print(f_score)
-print(common.createConfusionMatrix(Y_predict_dynamic, Y_dynamic_test, [1,2,3]))
+print(common.createConfusionMatrix(Y_predict_dynamic, Y_dynamic_test, [1,2,3])) """
 #print clf.n_support_
 ################################################################################################
 
@@ -70,3 +71,6 @@ print(prec)										# Print Precision, Recall and f-score
 print(rec)
 print(f_score)
 print((common.createConfusionMatrix(Y_predict_nondynamic, Y_nondynamic_test, [4,5,6])))	# Print Confusion Matrix for the same
+
+# 画混淆矩阵
+plot_confusion_matrix(common.createConfusionMatrix(Y_predict_nondynamic, Y_nondynamic_test, [4,5,6]))
