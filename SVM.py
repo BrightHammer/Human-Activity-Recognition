@@ -1,5 +1,5 @@
 # Author "Keerthi Raj Nagaraja"
-
+# %%
 # Importing libraries
 from math import *
 from numpy import *
@@ -18,7 +18,7 @@ set_printoptions(suppress=True)
 
 filename='../UCI HAR Dataset/' 							# Dataset Used (Change as per your computer's path)
 #--------------------------------------------------------------------------------------------#
-
+# %%
 X_train=common.parseFile(filename+'train/X_train.txt')				# Read X Train 
 Y_train=(common.parseFile(filename+'train/y_train.txt')).flatten()		# Read Y Train and flatten it to 1D array
 X_test=common.parseFile(filename+'test/X_test.txt')				# Read X Test
@@ -73,4 +73,7 @@ print(f_score)
 print((common.createConfusionMatrix(Y_predict_nondynamic, Y_nondynamic_test, [4,5,6])))	# Print Confusion Matrix for the same
 
 # 画混淆矩阵
-plot_confusion_matrix(common.createConfusionMatrix(Y_predict_nondynamic, Y_nondynamic_test, [4,5,6]))
+# %%
+LABELS = ["Sitting", "Standing", "Laying"]
+plot_confusion_matrix(
+    common.createConfusionMatrix(Y_predict_nondynamic, Y_nondynamic_test, [4,5,6]),LABELS,normalize=True)
